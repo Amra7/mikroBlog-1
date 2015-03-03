@@ -1,5 +1,7 @@
 package models;
 
+import java.util.List;
+
 import javax.persistence.*;
 
 import helpers.*;
@@ -18,6 +20,9 @@ public class User extends Model {
 
 	@MinLength(6)
 	public String password;
+	
+	@OneToMany(mappedBy="author")
+	public List<Post> posts;
 
 	public User() {
 		this.id = -1;

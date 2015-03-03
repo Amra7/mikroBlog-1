@@ -9,7 +9,7 @@ public class Session extends Security.Authenticator {
 	
 	@Override
 	public String getUsername(Context ctx){
-		if(ctx.session().containsKey("user_id"))
+		if(!ctx.session().containsKey("user_id"))
 			return null;
 		long id = Long.parseLong(ctx.session().get("user_id"));
 		User u = User.find(id);
