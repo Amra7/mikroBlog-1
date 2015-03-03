@@ -23,7 +23,9 @@ public class Session extends Security.Authenticator {
 		return redirect(routes.Application.index());
 	}
 	
-	public static User getCurrentUsser(Context ctx){
+	public static User getCurrentUser(Context ctx){
+		if(!ctx.session().containsKey("user_id"))
+			return null;
 		long id = Long.parseLong(ctx.session().get("user_id"));
 		User u = User.find(id);
 		return u;
